@@ -28,7 +28,6 @@ while True:
                         exam_already_passed = True
                         if points > taken_exam[contest]:
                             taken_exam[contest] = points
-                            contestants_dictionary[username].append({contest: points})
                 if not exam_already_passed:
                     contestants_dictionary[username].append({contest: points})
     new_command = input()
@@ -58,3 +57,4 @@ for name, dict_courses in sorted_dict.items():
     final_list = sorted(list_for_printing, key=lambda item: item[-1], reverse=True)
     for printing in final_list:
         print(f"#  {printing[0]} -> {printing[1]}")
+
