@@ -1,14 +1,13 @@
 import re
-text = input()
-countries_list = []
+initial_string = input()
+destinations_list = []
 travel_points = 0
-
-pattern = r"(=|\/)(?P<country>[A-Z][a-zA-Z][a-zA-Z]+)\1"
-matches = re.finditer(pattern, text)
+pattern = r"(?P<symbol>=|\/)(?P<destination>[A-Z][A-Za-z]{2,})\1"
+matches = re.finditer(pattern, initial_string)
 for match in matches:
-    country = match.group("country")
-    countries_list.append(country)
-for points in countries_list:
-    travel_points += len(points)
-print(f"Destinations: {', '.join(countries_list)}")
+    destination = match.group("destination")
+    destinations_list.append(destination)
+for current_destination in destinations_list:
+    travel_points += len(current_destination)
+print(f"Destinations: {', '.join(destinations_list)}")
 print(f"Travel Points: {travel_points}")
