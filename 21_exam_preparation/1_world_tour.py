@@ -1,32 +1,25 @@
-all_stops = input()
+initial_stops = input()
 command = input()
 while command != "Travel":
     command = command.split(":")
-    manipulation = command[0]
-    if manipulation == "Add Stop":
+    action = command[0]
+    if action == "Add Stop":
         index = int(command[1])
-        city = command[2]
-        if 0 <= index < len(all_stops):
-            all_stops = all_stops[:index] + city + all_stops[index:]
-            print(all_stops)
-        else:
-            print(all_stops)
-    elif manipulation == "Remove Stop":
+        new_string = command[2]
+        if 0 <= index < len(initial_stops):
+            initial_stops = initial_stops[:index] + new_string + initial_stops[index:]
+        print(initial_stops)
+    elif action == "Remove Stop":
         start_index = int(command[1])
         end_index = int(command[2])
-        if 0 <= start_index < len(all_stops) and 0 <= end_index < len(all_stops):
-            all_stops = all_stops[:start_index] + all_stops[end_index + 1:]
-            print(all_stops)
-        else:
-            print(all_stops)
-    elif manipulation == "Switch":
+        if 0 <= start_index < len(initial_stops) and 0 <= end_index < len(initial_stops):
+            initial_stops = initial_stops[:start_index] + initial_stops[end_index + 1:]
+        print(initial_stops)
+    elif action == "Switch":
         old_string = command[1]
-        new_string = command[2]
-        if old_string in all_stops:
-            all_stops = all_stops.replace(old_string, new_string)
-            print(all_stops)
-        else:
-            print(all_stops)
+        switch_string = command[2]
+        if old_string in initial_stops:
+            initial_stops = initial_stops.replace(old_string, switch_string)
+        print(initial_stops)
     command = input()
-print(f"Ready for world tour! Planned stops: {all_stops}")
-
+print(f"Ready for world tour! Planned stops: {initial_stops}")
